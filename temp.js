@@ -1,9 +1,9 @@
 console.log("");
-var i = '';
+var i = 4;
 var j = 2;
 
 
-
+var header = "hello world";
 
 var o = {'name': 'fluffy',
       age: 3
@@ -38,18 +38,37 @@ var red = function(){
   }
 }
 
-var addItem = function(text) {
+var addItem = function() {
 
   var list = document.getElementById("thelist");
   var newitem = document.createElement("li");
-  newitem.innerHTML = text;
+  newitem.innerHTML = "item " + i;
   list.appendChild(newitem);
+  i+=1;
+
+  for (var j = 0; j < item.length; j ++) {
+    item[j].addEventListener('click', removeItem());
+    item[j].addEventListener('mouseover', function() change());
+  }
+
 };
 
+var reset = function() {
+    var head = document.getElementById("h");
+  head.innerHTML = header;
+}
 
-var removeItem = function(n) {
+var change = function(text) {
+  var header = document.getElementById("h");
+  header.innerHTML = text;
+}
+
+
+var removeItem = function() {
+  /*
   var listitems = document.getElementsByTagName("li");
-  listitems[n].remove();
+  listitems[n].remove();*/
+  return function(){this.remove();};
 };
 
 var buttonCallBack = function(e){
@@ -67,4 +86,13 @@ var b = document.getElementById('b');
 b.addEventListener('click', addItem);
 
 var item = document.getElementsByTagName('li');
-item.addEventListener('click', removeItem);
+//var item2 = document.getElementsByTagName('thelist');
+//item.addEventListener('click', removeItem);
+
+for (var i = 0; i < item.length; i ++) {
+  item[i].addEventListener('click', removeItem())
+}
+
+//for (var i = 0; i < item2.length; i ++) {
+//  item2[i].addEventListener('click', removeItem())
+//}
