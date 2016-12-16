@@ -38,6 +38,13 @@ var red = function(){
   }
 }
 
+var green = function(){
+  var items = document.getElementsByTagName('li');
+  for (var i=0; i<items.length; i++) {
+    items[i].classList.add('green');
+  }
+}
+
 var addItem = function(text) {
 
   var list = document.getElementById("thelist");
@@ -58,13 +65,36 @@ var buttonCallBack = function(e){
 };
 
 var redCallBack = function(e) {
-  console.log(this);
-  this.classList.add('red');
-  red();
+    console.log(this);
+    this.classList.add('red');
+    red();
 };
 
 var b = document.getElementById('b');
 b.addEventListener('click', addItem);
 
-var item = document.getElementsByTagName('li');
-item.addEventListener('click', removeItem);
+var item = document.getElementById('thelist');
+item.addEventListener('click', red);
+
+//var item = document.getElementById('thelist');
+//for(var n = 0; n<item.length ; n++){
+//    item[n]
+//}
+
+/*
+var greenMe = function(){
+    var items = document.getElementsByTagName('li');
+    for( var n = 0 ; n < items.length ; n++){ 
+	items[n].classList.add('green');
+    }
+};
+
+var piece = document.getElementsByTagName('li');
+//piece[0].classList.add('green');
+for(var n = 0; n<piece.length; n++){
+    piece[n].addEventListener('click', green);//greenMe(n));
+    //items[n].classList.add('red');
+}
+*/
+//var item = document.getElementsByTagName('li');
+//item.addEventListener('click', removeItem);

@@ -49,7 +49,7 @@ var removeItem = function(n) {
     listitems[n].remove();
 };
 
-
+//set the whole list to red
 var red = function() {
     var items = document.getElementsByTagName("li");
     for(var i = 0; i < items.length; i++) {
@@ -67,3 +67,11 @@ var o = { 'name' : 'Thluffy',
 	      return x+30;
 	  }
 	};
+
+
+
+//The action
+
+
+var b = document.getElementById('b');
+b.addEventListener('click', addItem);
