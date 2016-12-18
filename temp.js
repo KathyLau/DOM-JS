@@ -38,8 +38,17 @@ var red = function(){
   }
 }
 
+<<<<<<< HEAD
 var addItem = function() {
+=======
+var green = function(){
+  var items = document.getElementsByTagName('li');
+  for (var i=0; i<items.length; i++) {
+    items[i].classList.add('green');
+  }
+}
 
+var addItem = function(text) {
   var list = document.getElementById("thelist");
   var newitem = document.createElement("li");
   newitem.innerHTML = "item " + i;
@@ -77,9 +86,9 @@ var buttonCallBack = function(e){
 };
 
 var redCallBack = function(e) {
-  console.log(this);
-  this.classList.add('red');
-  red();
+    console.log(this);
+    this.classList.add('red');
+    red();
 };
 
 var b = document.getElementById('b');
@@ -93,6 +102,5 @@ for (var i = 0; i < item.length; i ++) {
   item[i].addEventListener('click', removeItem())
 }
 
-//for (var i = 0; i < item2.length; i ++) {
-//  item2[i].addEventListener('click', removeItem())
-//}
+var item = document.getElementById('thelist');
+item.addEventListener('click', red);
