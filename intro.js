@@ -2,7 +2,7 @@
 //(Ctrl-Shift-J in Chromium & Firefox to reveal console)
 console.log("AYO");
 
-var i = "hello";
+var i = 8;//this needed
 var j = 20;
 
 
@@ -35,7 +35,7 @@ var factR = function(n) {
 
 
 //add list item 
-var addItem = function(text) {
+var addAnItem = function(text) {
     var list = document.getElementById("thelist");
     var newitem = document.createElement("li");
     newitem.innerHTML = text;
@@ -44,10 +44,10 @@ var addItem = function(text) {
 
 
 //remove specified item from list
-var removeItem = function(n) {
-    var listitems = document.getElementsByTagName('li');
-    listitems[n].remove();
-};
+//var removeItem = function(n) {
+//    var listitems = document.getElementsByTagName('li');
+//    listitems[n].remove();
+//};
 
 //set the whole list to red
 var red = function() {
@@ -69,9 +69,40 @@ var o = { 'name' : 'Thluffy',
 	};
 
 
+var removeItem = function() {
+    return function(){
+	this.remove();
+    };
+};
+
+var addItem = function() {
+  var list = document.getElementById("thelist");
+  var newitem = document.createElement('li');
+  newitem.innerHTML = "item " + i;
+  list.appendChild(newitem);
+  i+=1;
+};
+
+var makeRed = function(){
+  var list = document.getElementById("thelist");
+  var newitem = document.createElement('li');
+  newitem.innerHTML = "item " + i;
+  list.appendChild(newitem);
+  i+=1;
+};
 
 //The action
 
+//
 
 var b = document.getElementById('b');
 b.addEventListener('click', addItem);
+
+
+var item = document.getElementsByTagName('li');
+//var item = document.getElementById("thelist");
+for (var k = 0; k < item.length; k ++) {
+  item[k].addEventListener('click', removeItem())
+}
+
+
