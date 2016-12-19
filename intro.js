@@ -61,16 +61,19 @@ var change_h = function (input) {
     head.innerHTML = input; //this lets us put html in a specfic place 
 };
 
+var size = 8;//a global var
+
+//adds item
 var addItem = function () {
     var list = document.getElementById("thelist");
     var items = document.getElementsByTagName("li");
     var new_element = document.createElement("li");
-    var n = items.length;//this gives us the numebr we need
+    var n = size;
     new_element.innerHTML = ("item " + n);
     add_listeners(new_element);
     list.appendChild(new_element);
+    size+=1;
 };
-
 
 //this makes the elements listen 
 var add_listeners = function (input) {
@@ -96,10 +99,46 @@ var add_listeners = function (input) {
     );
 };
 
+//the fib fxns
+
+var fib_1 = 0;
+var fib_2 = 1;
+
+
+var addFib = function () {
+    /*
+    if(fib_1 == 0){
+	console.log("AYO");
+	var list = document.createElement("ol");
+	list.setAttribute("id", "fiblist");
+	document.body.appendChild(list);
+    */
+    //else{
+    var list = document.getElementById("fiblist");
+    //}
+    
+    var items = document.getElementsByTagName("li");
+    var new_element = document.createElement("li");
+    var n = fib_1;
+    new_element.innerHTML = ("fib item " + n);
+    add_listeners(new_element);
+    list.appendChild(new_element);
+
+    var hold_2 = fib_2;
+    fib_2=fib_1+fib_2;
+    fib_1 = hold_2;
+    
+}
+
+
 //the first button listener    
 var button = document.getElementById("b");
 button.addEventListener("click", addItem);
 
+
+//the second button
+var button = document.getElementById("c");
+button.addEventListener("click", addFib);
 
 //the list listener
 var items = document.getElementsByTagName("li");
