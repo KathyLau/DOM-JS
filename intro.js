@@ -1,9 +1,7 @@
+
 //send diagnostic output to console
 //(Ctrl-Shift-J in Chromium & Firefox to reveal console)
 console.log("AYO");
-
-var i = 8;//this needed
-var j = 20;
 
 
 //assign an anonymous fxn to a var
@@ -34,21 +32,6 @@ var factR = function(n) {
 };
 
 
-//add list item 
-var addAnItem = function(text) {
-    var list = document.getElementById("thelist");
-    var newitem = document.createElement("li");
-    newitem.innerHTML = text;
-    list.appendChild(newitem);
-};
-
-
-//remove specified item from list
-//var removeItem = function(n) {
-//    var listitems = document.getElementsByTagName('li');
-//    listitems[n].remove();
-//};
-
 //set the whole list to red
 var red = function() {
     var items = document.getElementsByTagName("li");
@@ -67,42 +50,60 @@ var o = { 'name' : 'Thluffy',
 	      return x+30;
 	  }
 	};
+//THE END OF THE OLD EXCESS FXNS
 
+//the Original header, the OGH
+var original_h = "Hello World!";
 
-var removeItem = function() {
-    return function(){
-	this.remove();
-    };
+//this changes the header
+var change_h = function (input) {
+    var head = document.getElementById("h");
+    head.innerHTML = input; //this lets us put html in a specfic place 
 };
 
-var addItem = function() {
-  var list = document.getElementById("thelist");
-  var newitem = document.createElement('li');
-  newitem.innerHTML = "item " + i;
-  list.appendChild(newitem);
-  i+=1;
+var addItem = function () {
+    var list = document.getElementById("thelist");
+    var items = document.getElementsByTagName("li");
+    var new_element = document.createElement("li");
+    var n = items.length;//this gives us the numebr we need
+    new_element.innerHTML = ("item " + n);
+    add_listeners(new_element);
+    list.appendChild(new_element);
 };
 
-var makeRed = function(){
-  var list = document.getElementById("thelist");
-  var newitem = document.createElement('li');
-  newitem.innerHTML = "item " + i;
-  list.appendChild(newitem);
-  i+=1;
+
+//this makes the elements listen 
+var add_listeners = function (input) {
+    input.addEventListener(
+        "mouseover",
+	function () {
+	    change_h(this.innerHTML);
+	}
+    );
+    
+    input.addEventListener(
+        "mouseout",
+        function () {
+	    change_h(original_h);//header_inital)
+	}
+    );
+    
+    input.addEventListener(
+        "click",
+        function () {
+	    this.remove();
+	}
+    );
 };
 
-//The action
-
-//
-
-var b = document.getElementById('b');
-b.addEventListener('click', addItem);
+//the first button listener    
+var button = document.getElementById("b");
+button.addEventListener("click", addItem);
 
 
-var item = document.getElementsByTagName('li');
-//var item = document.getElementById("thelist");
-for (var k = 0; k < item.length; k ++) {
-  item[k].addEventListener('click', removeItem())
-}
-
+//the list listener
+var items = document.getElementsByTagName("li");
+for (var k = 0; k < items.length; k++) {
+    add_listeners(items[k]);
+};
 
